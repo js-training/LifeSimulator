@@ -1,0 +1,36 @@
+table.gameField {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border: 1px solid black;
+}
+
+table.gameField td {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+table.gameField tr {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+table.gameField td.empty {
+    background-image: url("../img/water.gif");
+}
+
+.statistics {
+    font: 16px sans-serif;
+    padding: 50px 0;
+}
+
+.statisticsItem {
+    margin: 30px 0;
+}
+
+.statisticsItem div {
+    margin: 0 50px;
+}
