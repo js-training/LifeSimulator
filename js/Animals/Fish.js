@@ -1,3 +1,5 @@
+"use strict";
+
 function Fish(){
     this.character = CharactersEnum.FISH;
     this.directions = new Dictionary(

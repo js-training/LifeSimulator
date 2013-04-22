@@ -1,3 +1,5 @@
+"use strict";
+
 function Pearl(animal){
     this.character = CharactersEnum.PEARL;
     this.age = 1;
@@ -15,4 +17,4 @@ Pearl.prototype.act = function(surroundings){
         this.age++;
         return {type: "wait"};
     }
-}
+};

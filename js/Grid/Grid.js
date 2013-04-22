@@ -1,3 +1,5 @@
+"use strict";
+
 function Grid(width, height) {
     this.width = width;
     this.height = height;
@@ -64,4 +66,4 @@ Grid.prototype.remove = function() {
 
 function characterFromElement(element) {
     return (element == undefined) ? " " : element.character;
-};
+}

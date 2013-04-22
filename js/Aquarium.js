@@ -1,11 +1,3 @@
-/**
- * Created with JetBrains WebStorm.
- * User: K.Guselshchykova
- * Date: 4/8/13
- * Time: 12:32 PM
- * To change this template use File | Settings | File Templates.
- */
-
 "use strict";
 
 var aquariumDefault =
@@ -33,34 +25,7 @@ var aquariumDefault =
     "*0000    @    0000000000       @     *",
     "**************************************"];
 
-//var aquariumDefault =
-//    ["*                                    *",
-//        "*  0                                 *",
-//        "* 0                                  *",
-//        "*0                                   *",
-//        "*0                                   *",
-//        "*0         %                         *",
-//        "* 00                                 *",
-//        "*   0                                *",
-//        "*                 0                  *",
-//        "*                 0 0     0          *",
-//        "*                   0   0            *",
-//        "*                    0 0             *",
-//        "*                    0               *",
-//        "*   0               0                *",
-//        "*   0 0          0 0                 *",
-//        "*   000        0 00                  *",
-//        "*   0          0 0                   *",
-//        "*0  0          00                    *",
-//        "*0  0          0                     *",
-//        "*0  0          0     0   0           *",
-//        "*0  0           0    00 0            *",
-//        "*0000         0000000000             *",
-//        "**************************************"];
-
-// game logic
 function Aquarium(plan) {
-    this.statistics;
     this.grid = new Grid(plan[0].length, plan.length);
     for (var y = 0; y < plan.length; y++) {
         var line = plan[y];
@@ -69,7 +34,7 @@ function Aquarium(plan) {
                 elementFromCharacter(line.charAt(x)));
         }
     }
-};
+}
 
 Aquarium.prototype.render = function(place){
     if (this.statistics) {
@@ -91,7 +56,7 @@ function makeAnimalsInformation(arrayAnimals, title, attrName){
         }
     }
     return animalDiv;
-};
+}
 
 Aquarium.prototype.renderStatistics = function(){
     var blueFishes = makeAnimalsInformation(this.arrayOfItems(CharactersEnum.SLOW_FISH), "Small blue fishes", "energy");
@@ -150,7 +115,7 @@ Aquarium.prototype.growFood = function(food){
     var randomEmptyPlace = randomElement(emptyPlaces);
     this.grid.setValueAt(randomFood.point.add(globalDirections.lookup(randomEmptyPlace)),
         new Food());
-}
+};
 
 Aquarium.prototype.processCreature = function(creature) {
     var surroundings = this.listSurroundings(creature.point);
@@ -205,13 +170,6 @@ Aquarium.prototype.start = function() {
         this.running = setInterval(bind(this.step, this), 500);
 };
 
-Aquarium.prototype.stop = function() {
-    if (this.running) {
-        clearInterval(this.running);
-        this.running = null;
-    }
-};
-
 function elementFromCharacter(character) {
         if (character == " ")  {
             return undefined;
@@ -226,6 +184,7 @@ function elementFromCharacter(character) {
         } else if (character == CharactersEnum.FOOD){
             return new Food();
         }
+    return undefined;
 }
 
 window.onload = function () {

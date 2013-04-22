@@ -1,3 +1,5 @@
+"use strict";
+
 function dom(name, attributes) {
     var node = document.createElement(name);
     if (attributes) {

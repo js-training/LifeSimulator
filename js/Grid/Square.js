@@ -1,11 +1,7 @@
+"use strict";
+
 var Square = function(character, tableCell) {
         this.background = "empty";
-//        if (character === "#")    {
-//            this.background = "wall";
-//        } else if (character === "*")  {
-//            this.background = "exit";
-//        }
-
         this.tableCell = tableCell;
         this.tableCell.className = this.background;
 
@@ -29,28 +25,7 @@ var Square = function(character, tableCell) {
                 this.content + ".gif"});
             this.tableCell.appendChild(image);
         }
-
-    this.hasPlayer = function() {
-        return this.content == "player";
-    };
-    this.hasFood = hasFood;
-
-    this.hasWall = function() {
-        return this.content == "wall";
-    };
-   this.isEmpty = function() {
-        return this.content == null && this.background == "empty";
-    };
-   this.clear = function(){
-        this.content = null;
-        this.background = "empty";
-    } ;
 };
-
-hasFood = function() {
-    return this.content == "food";
-};
-
 
 Square.moveContent = function(target) {
     target.content = this.content;

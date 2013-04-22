@@ -1,3 +1,5 @@
+"use strict";
+
 function Snail(){
     this.character = CharactersEnum.SNAIL;
     //snails are slow, so most of time they just stay at their places

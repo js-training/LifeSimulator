@@ -1,3 +1,5 @@
+"use strict";
+
 function SlowFish(){
     this.character = CharactersEnum.SLOW_FISH;
     this.directions = new Dictionary(
