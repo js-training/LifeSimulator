@@ -24,16 +24,11 @@ var aquariumDefault =
     "*0  0           0    00 0            *",
     "*0000    @    0000000000       @     *",
     "**************************************"];
-
+//var aquariumDefault =
+//    ["*****",
+//     "**0 *"];
 function Aquarium(plan) {
-    this.grid = new Grid(plan[0].length, plan.length);
-    for (var y = 0; y < plan.length; y++) {
-        var line = plan[y];
-        for (var x = 0; x < line.length; x++) {
-            this.grid.setValueAt(new Point(x, y),
-                elementFromCharacter(line.charAt(x)));
-        }
-    }
+    this.grid = mapGrid(plan);
 }
 
 Aquarium.prototype.render = function(place){
@@ -49,11 +44,10 @@ function makeAnimalsInformation(arrayAnimals, title, attrName){
     var animalDiv = "";
     if (arrayAnimals.length > 1) {
         animalDiv = dom("DIV",  {"class": "statisticsItem"}, title + " : " + arrayAnimals.length);
-        for (var i = 0; i < arrayAnimals.length; i++){
-            console.log(arrayAnimals[i].object);
-            var animalInfo = "                # " + i + " " + attrName+ ": " + arrayAnimals[i].object.getEnergy();
-            animalDiv.appendChild(dom("DIV", null, animalInfo));
-        }
+        reduce(function(base, element){
+                var animalInfo = " # energy: " + element.object.getEnergy();
+                return base.appendChild(dom("DIV", null, animalInfo));
+            }, animalDiv, arrayAnimals);
     }
     return animalDiv;
 }

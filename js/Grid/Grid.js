@@ -32,6 +32,13 @@ Grid.prototype.each = function(action) {
 };
 
 Grid.prototype.render = function(){
+    function makeMap(element){
+        console.log("makeMap    ");
+        var tableCell = dom("TD");
+        tableRow.appendChild(tableCell);
+        return new Square(characterFromElement(element, tableCell));
+    }
+
     if (this.table != undefined) {
         this.remove();
     }
@@ -43,12 +50,14 @@ Grid.prototype.render = function(){
     for (var y = 0; y <  this.height; y++) {
         var tableRow = dom("TR");
         var squareRow = [];
+
         for (var x = 0; x < this.width; x++) {
             var tableCell = dom("TD");
             tableRow.appendChild(tableCell);
             var square = new Square(characterFromElement(this.valueAt(new Point(x, y))), tableCell);
             squareRow.push(square);
         }
+
         tbody.appendChild(tableRow);
         this.squares.push(squareRow);
     }
